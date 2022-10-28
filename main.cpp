@@ -4,6 +4,7 @@
 using namespace std;
 
 void printMatrix (int AirQuality_Index[][3], int nrows, int ncols);
+int CountUnhealthySensitive(int AirQuality_Index [][3], int n_rows, int city_col)
 
 int main() {
 
@@ -15,9 +16,40 @@ int main() {
   {17, 13, 27}};
 
   printMatrix (AirQuality_Index, nrows, ncols);
-  
+
+  int SensitiveCount;
+  int city_col;
+  int Mean;
+
+  cout << "Enter in a number to a corresponding city" << endl;
+
+  cout << "Grand Junciton = 0, ";
+  cout << "Fort Collins = 1, ";
+  cout << "Denver/boulder = 2)";
+  cin >> city_col;
+  cout << endl;
+
+  SensitiveCount = CountUnhealthySensitive(AirQuality_Index, nrows, city_col);
+
   
   }
+int CountUnhealthySensitive(int AirQuality_Index [][3], int n_rows, int city_col){
+
+int count = 0;
+  bool AirQuality;
+  int row, col;
+
+  for (row = 0; row < n_rows; row ++){
+    if (AirQuality_Index[row][city_col] >= 101 && AirQuality_Index[row][city_col]){
+    AirQuality = true;
+      count ++;
+      }
+    else
+      AirQuality = false;
+    }
+  return count;
+  }
+
 
 void printMatrix (int AirQuality_Index[][3], int nrows, int ncols){
  cout << "Daily Air Quality for PM2.5 values by location" << endl; 
